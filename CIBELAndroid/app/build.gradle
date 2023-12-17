@@ -1,0 +1,95 @@
+plugins {
+    id 'com.android.application'
+    id 'org.greenrobot.greendao'
+}
+apply plugin: 'org.sonarqube'
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "es.unican.cibel"
+        minSdk 27
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+greendao {
+    schemaVersion 15
+    daoPackage = "es.unican.cibel.repository.db"
+}
+
+// added for sonar qube
+sonarqube {
+    properties {
+        property "sonar.projectName", "ContentResolver"
+        property "sonar.projectKey", "ContentResolver"
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.language", "java"
+        property "sonar.sources", "src/main/java"
+        property "sonar.java.sources", "src/main/java"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.login", "admin"
+        property "sonar.password", "root"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation "org.mockito:mockito-core:3.+"
+    testImplementation 'androidx.test:core:1.0.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation 'org.robolectric:robolectric:4.6'
+
+    // GreenDAO (for database)
+    implementation 'org.greenrobot:greendao:3.3.0'
+
+    // GSON (for json serialization/deserialization)
+    implementation 'com.google.code.gson:gson:2.9.0'
+
+    // Retrofit (for REST API access) https://square.github.io/retrofit/
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
+
+    // OhHttp (para interceptar JSON, debug)
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+
+    // Picasso (image downloading and caching library)
+    implementation 'com.squareup.picasso:picasso:2.8'
+
+    // JSON y JSOUP (Leer y analizar JSON)
+    implementation 'org.json:json:20230618'
+    implementation 'org.jsoup:jsoup:1.16.1'
+}

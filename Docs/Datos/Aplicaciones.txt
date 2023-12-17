@@ -1,0 +1,65 @@
+#Utilidades
+Screen Lock
+Link to Windows
+
+#Compras
+Aliexpress
+Shein
+Paypal
+
+#Comunicación
+Telegram
+Viber
+Discord
+Messenger
+WhatsApp
+
+#Fotografía
+Picsart
+Moments
+Preview
+Photos
+
+#Productividad
+Microsoft Excel
+LastPass
+OneNote
+Microsoft 365
+
+#Reuniones y Conferencias
+Zoom
+Meet
+Microsoft Teams
+
+#Educación
+Moodle
+
+#Almacenamiento en la Nube
+Dropbox
+Google Drive
+OneDrive
+
+#Comida
+Uber Eats
+
+#Entretenimiento
+Twitch
+Netflix
+TikTok
+Shazam
+
+#Viajes
+Uber
+
+#Navegadores Web
+Opera Touch
+Firefox
+Chrome
+
+#Redes Sociales
+Facebook
+LinkedIn
+Instagram
+
+#Seguridad
+Authenticator

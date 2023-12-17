@@ -1,0 +1,78 @@
+SOFTWARE NECESARIO:
+
+- MySQL 
+Versión concreta que tengo: 
+mysql  Ver 8.1.0 for macos13 on x86_64 (MySQL Community Server - GPL)
+
+- Eclipse
+Versión concreta que tengo: 
+Eclipse IDE for Enterprise Java and Web Developers (includes Incubating components)
+Version: 2023-09 (4.29.0)
+
+- Maven
+Versión concreta que tengo: 
+Apache Maven 3.9.4 (dfbb324ad4a7c8fb0bf182e6d91b0ae20e3d2dd9)
+Maven home: /Applications/apache-maven-3.9.4
+Java version: 21, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
+Default locale: es_ES, platform encoding: UTF-8
+OS name: "mac os x", version: "14.0", arch: "aarch64", family: "mac"
+
+- Android Studio
+Versión concreta que tengo: 
+Android Studio Giraffe | 2022.3.1 Patch 2
+Build #AI-223.8836.35.2231.10811636, built on September 14, 2023
+Runtime version: 17.0.6+0-17.0.6b829.9-10027231 aarch64
+VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o.
+
+INSTRUCCIONES:
+
+1. Abrir terminal e iniciar sesión en mysql para crear la base de datos del servicio:
+Ejecutar [mysql -u root -p]
+Ingresar tu contraseña
+Ejecutar [create database cibel_db;]
+Ejecutar [exit]
+
+2. Crear las tablas y meter los datos a través del archivo de backup:
+Situarte en el mismo path que el archivo CIBEL/Docs/backup_cibel_db.sql
+Ejecutar [mysql -u root -p cibel_db < backup_cibel_db.sql]
+
+3. Comprobar que se han creado las tablas y metido los datos:
+Ejecutar [mysql -u root -p]
+Ingresar tu contraseña
+Ejecutar [use cibel_db;]
+Ejecutar [show tables;]
++-------------------------+
+| Tables_in_cibel_db      |
++-------------------------+
+| activo                  |
+| activo_x_vulnerabilidad |
+| amenaza                 |
+| categoria               |
+| categoria_x_control     |
+| control                 |
+| control_x_amenaza       |
+| tipo                    |
+| vulnerabilidad          |
++-------------------------+
+
+Ejecutar [select * from activo_x_vulnerabilidad;]
+Deberían salir 648 filas
+
+4. Desplegar el servicio:
+Abrir en Eclipse el proyecto CIBEL/CIBELServiceSpring
+Abrir el archivo src/main/resources/application.properties
+Cambiar el valor de spring.datasource.password con tu contraseña de mysql
+
+Abrir terminal en la carpeta CIBELServiceSpring
+Ejecutar [mvn clean package]
+Ejecutar [cd target/]
+Ejecutar [java -jar CIBELService.jar]
+
+5. Ejecutar app en AndroidStudio:
+Abrir en AndroidStudio el proyecto CIBEL/AppRiesgosPersonales
+Abrir la clase repository/cibel/rest/CibelServiceConstants.java
+Cambiar el valor de API_URL con tu ip
+
+Ejecutar la app
+Si todo ha salido bien saldrá un Toast diciendo que se han cargado X dispositivos
+

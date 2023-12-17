@@ -1,0 +1,93 @@
+<resources>
+    <string name="app_name">CIBELApps</string>
+
+    <string name="bottom_nav_home">HOME</string>
+    <string name="bottom_nav_riesgos">AMENAZAS</string>
+    <string name="bottom_nav_controles">BUENAS PRÁCTICAS</string>
+    <string name="bottom_nav_perfil">PERFIL</string>
+    <string name="bottom_nav_smart_home">SMART HOME</string>
+
+    <string name="search_hint">Buscar dispositivos</string>
+
+    <string name="loadCorrect">Se han cargado %d dispositivos</string>
+    <string name="loadError">Ha ocurrido un error al acceder a los datos</string>
+
+    <string name="dElement_detail_riesgos_title">Buenas prácticas</string>
+    <string name="riesgos_detail_controles_title">Buenas prácticas para mitigarlo</string>
+    <string name="controles_detail_riesgos_title">Amenazas que mitiga</string>
+    <string name="asset_detail_cves_title">Vulnerabilidades</string>
+
+    <string name="dElement_detail_add">Añadir</string>
+    <string name="dElement_detail_remove">Eliminar</string>
+
+    <string name="perfil_tabRiesgos">Amenazas actuales</string>
+    <string name="perfil_tabActivos">Smart Home</string>
+    <string name="perfil_tabControles">Buenas prácticas</string>
+    <string name="perfil_numDispositivos">Nº dispositivos</string>
+    <string name="perfil_numVulnerabilidades">Nº vulnerabilidades</string>
+    <string name="perfil_severity">Gravedad de los fallos de seguridad</string>
+
+    <string name="nivelRiesgoAlto">Riesgo alto</string>
+    <string name="nivelRiesgoMedio">Riesgo medio</string>
+    <string name="nivelRiesgoBajo">Riesgo bajo</string>
+    <string name="dElementAdded">Añadido</string>
+    <string name="controlAdded">Aplicado</string>
+    <string name="riesgos_tabApps">Apps</string>
+    <string name="riesgos_tabDevices">Dispositivos IoT</string>
+
+    <string name="severity_low">LOW</string>
+    <string name="severity_medium">MEDIUM</string>
+    <string name="severity_high">HIGH</string>
+    <string name="severity_critical">CRITICAL</string>
+
+    <string name="cve_baseScore_title">Gravedad</string>
+    <string name="cve_confidencialidad_title">Confidencialidad</string>
+    <string name="cve_integridad_title">Integridad</string>
+    <string name="cve_disponibilidad_title">Disponibilidad</string>
+    <string name="cve_impacto_title">Impacto</string>
+    <string name="cve_info_impacto">
+    <![CDATA[
+        <b>1. Confidencialidad:</b><br>
+        ¿Qué significa? La confidencialidad se refiere a la capacidad de mantener la información protegida y accesible solo a las personas o sistemas autorizados. Si un dispositivo o sistema es confidencial, significa que la información que contiene no puede ser vista ni utilizada por personas no autorizadas.<br><br>
+        Ejemplo en un dispositivo IoT: Imagina que tienes una cámara de seguridad en tu hogar. Si esta cámara tiene una alta confidencialidad, significa que las imágenes y videos que captura solo pueden ser vistos por ti y las personas a las que autorices, y no pueden ser accedidos por extraños.<br><br>
+
+        <b>2. Integridad:</b><br>
+        ¿Qué significa? La integridad se refiere a la precisión y exactitud de la información almacenada o transmitida por un dispositivo o sistema. Si un dispositivo tiene alta integridad, significa que la información no ha sido alterada ni modificada de manera no autorizada.<br><br>
+        Ejemplo en un dispositivo IoT: Si tienes un termostato inteligente que controla la temperatura de tu hogar, la integridad asegura que los comandos que envías al termostato no sean alterados en el camino. Esto significa que la temperatura que configuras es la que realmente se establece.<br><br>
+
+        <b>3. Disponibilidad:</b><br>
+        ¿Qué significa? La disponibilidad se refiere a la capacidad de un dispositivo o sistema para estar operativo y accesible cuando se necesita. Si un dispositivo tiene alta disponibilidad, significa que está listo y funcionando cuando lo necesitas, sin interrupciones.<br><br>
+        Ejemplo en un dispositivo IoT: Si tienes cerraduras inteligentes en tu casa, es importante que estén siempre disponibles. Imagina que estás llegando a casa y quieres desbloquear la puerta con tu teléfono. La disponibilidad asegura que la cerradura responda rápidamente y sin problemas.<br><br>
+
+        Las etiquetas que verás junto a estas características tienen el siguiente significado:<br><br>
+        1. <b>NINGUNO:</b> Esto indica que no hay impacto.<br>
+        2. <b>BAJO:</b> El impacto es menor y no representa una amenaza seria.<br>
+        3. <b>PARCIAL:</b> Esto significa que hay un impacto significativo, pero no es completo.<br>
+        4. <b>ALTO:</b> Esto significa que el impacto es grave y puede tener consecuencias serias.<br>
+        5. <b>COMPLETO:</b> Esto significa que el impacto es total y puede tener consecuencias catastróficas.
+    ]]>
+    </string>
+    <string name="assetDetail_tabCves">Seguridad</string>
+
+    <string name="security_title">Puntuación de seguridad</string>
+
+    <string name="seguridad_0">Muy poco seguro</string>
+    <string name="seguridad_1">Poco seguro</string>
+    <string name="seguridad_2">Suficiente seguro</string>
+    <string name="seguridad_3">Bastante seguro</string>
+    <string name="ordenarSeguridad_Desc">Mayor a menor seguridad</string>
+    <string name="ordenarSeguridad_Asc">Menor a mayor seguridad</string>
+
+    <string name="ordenar_por">Ordenar por</string>
+    <string name="tus_dispositivos">Tus dispositivos</string>
+    <string name="fallos_de_seguridad">Fallos de seguridad</string>
+
+    <string name="ordenarFecha_Rec">Más recientes</string>
+    <string name="ordenarFecha_Ant">Más antiguos</string>
+    <string name="ordenarGravedad_Asc">Menor a mayor gravedad</string>
+    <string name="ordenarGravedad_Desc">Mayor a menor gravedad</string>
+
+    <string name="vacio"></string>
+
+
+</resources>
