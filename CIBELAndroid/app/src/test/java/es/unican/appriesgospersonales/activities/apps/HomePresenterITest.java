@@ -11,9 +11,9 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import es.unican.cibel.activities.activos.CatalogoPresenter;
-import es.unican.cibel.activities.activos.ICatalogoContract;
-import es.unican.cibel.common.MyApplication;
+import es.unican.cibelapps.activities.activos.CatalogoPresenter;
+import es.unican.cibelapps.activities.activos.ICatalogoContract;
+import es.unican.cibelapps.common.MyApplication;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = {Build.VERSION_CODES.O_MR1}, application = MyApplication.class)

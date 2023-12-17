@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:orientation="vertical"
-    tools:context="es.unican.cibel.activities.smarthome.SmartHomeView">
+    tools:context="es.unican.cibelapps.activities.smarthome.SmartHomeView">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
-                <es.unican.cibel.common.TramosSeekBar
+                <es.unican.cibelapps.common.TramosSeekBar
                     android:id="@+id/security_sb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

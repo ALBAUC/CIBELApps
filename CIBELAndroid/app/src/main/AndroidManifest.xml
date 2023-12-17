@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="es.unican.cibel">
+    package="es.unican.cibelapps">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -10,7 +10,7 @@
         tools:ignore="QueryAllPackagesPermission" />
 
     <application
-        android:name="es.unican.cibel.common.MyApplication"
+        android:name=".common.MyApplication"
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -23,12 +23,12 @@
         android:usesCleartextTraffic="true">
 
         <provider
-            android:name="es.unican.cibel.activities.activos.search.AppSuggestionProvider"
-            android:authorities="es.unican.cibel.activities.activos.search.AppSuggestionProvider" />
+            android:name=".activities.activos.search.AppSuggestionProvider"
+            android:authorities="es.unican.cibelapps.activities.activos.search.AppSuggestionProvider" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="es.unican.appriesgospersonales.fileprovider"
+            android:authorities="es.unican.cibelapps.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -37,7 +37,7 @@
         </provider>
 
         <activity
-            android:name="es.unican.cibel.activities.main.MainView"
+            android:name=".activities.main.MainView"
             android:windowSoftInputMode="adjustPan"
             android:exported="true"
             android:screenOrientation="portrait">

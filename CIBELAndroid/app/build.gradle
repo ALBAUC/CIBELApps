@@ -8,7 +8,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "es.unican.cibel"
+        applicationId "es.unican.cibelapps"
         minSdk 27
         targetSdk 33
         versionCode 1
@@ -34,7 +34,7 @@ android {
 
 greendao {
     schemaVersion 15
-    daoPackage = "es.unican.cibel.repository.db"
+    daoPackage = "es.unican.cibelapps.repository.db"
 }
 
 // added for sonar qube
