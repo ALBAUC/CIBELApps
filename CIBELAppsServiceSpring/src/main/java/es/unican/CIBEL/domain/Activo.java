@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,6 +24,9 @@ public class Activo {
 	
 	private String nombre;
 	
+	@Column(length = 500)
+	private String icono;
+	
 	@OneToOne
 	@JoinColumn(name ="fk_tipo")
 	private Tipo tipo;
@@ -35,9 +39,10 @@ public class Activo {
 	
 	public Activo() {}
 	
-	public Activo(String nombre, Tipo tipo) {
+	public Activo(String nombre, String icono, Tipo tipo) {
 		this.nombre = nombre;
 		this.tipo = tipo;
+		this.icono = icono;
 		this.vulnerabilidades = new LinkedList<Vulnerabilidad>();
 	}
 
@@ -47,6 +52,14 @@ public class Activo {
 	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	
+	public String getIcono() {
+		return icono;
+	}
+	
+	public void setIcono(String icono) {
+		this.icono = icono;
 	}
 
 	public Long getId() {

@@ -1,4 +1,4 @@
-package es.unican.appriesgospersonales.activities.apps;
+package es.unican.cibelapps.activities.activos;
 
 import static org.mockito.Mockito.verify;
 

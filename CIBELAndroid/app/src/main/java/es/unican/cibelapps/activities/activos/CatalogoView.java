@@ -1,28 +1,43 @@
 package es.unican.cibelapps.activities.activos;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts.RequestPermission;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 import es.unican.cibelapps.R;
 import es.unican.cibelapps.activities.activos.detail.AssetDetailView;
@@ -34,6 +49,9 @@ import es.unican.cibelapps.model.Activo;
 public class CatalogoView extends Fragment implements ICatalogoContract.View, MainView.RefreshableFragment {
 
     private ICatalogoContract.Presenter presenter;
+    //private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
+    private ActivityResultLauncher<String> requestPermissionLauncher;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +59,19 @@ public class CatalogoView extends Fragment implements ICatalogoContract.View, Ma
         presenter = new CatalogoPresenter(this);
         presenter.init();
         setHasOptionsMenu(true);
+
+        requestPermissionLauncher = registerForActivityResult(new RequestPermission(), isGranted -> {
+            if (isGranted) {
+                // Permiso otorgado, acceder a las apps
+                presenter.cargarAppsAutomatico();
+                refreshData();
+                // Aqui mostrar mensaje informativo con las aplicaciones que se han sincronizado
+            } else {
+                // Permiso denegado
+                // Explica al usuario que la función no está disponible porque
+                // requiere un permiso que el usuario ha denegado.
+            }
+        });
     }
 
     @SuppressLint("MissingInflatedId")
@@ -49,6 +80,7 @@ public class CatalogoView extends Fragment implements ICatalogoContract.View, Ma
                              @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_catalogo, container, false);
         RecyclerView categoriasDevicesRV = layout.findViewById(R.id.categoriasDevices_rv);
+        ImageView syncAppsIV = layout.findViewById(R.id.syncApps_iv);
 
         categoriasDevicesRV.setLayoutManager(new LinearLayoutManager(getContext()));
         categoriasDevicesRV.setAdapter(new RVTiposAdapter(getContext(), presenter.getTipos(), presenter.getPerfilAssets(), getMyApplication()));
@@ -57,6 +89,42 @@ public class CatalogoView extends Fragment implements ICatalogoContract.View, Ma
                 categoriasDevicesRV.getContext(),
                 DividerItemDecoration.VERTICAL);
         categoriasDevicesRV.addItemDecoration(dividerItemDecoration);
+
+        syncAppsIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Sincronizar aplicaciones");
+                builder.setMessage(getResources().getString(R.string.info_sync_apps));
+                builder.setPositiveButton("Sincronizar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Primero, verificar si el permiso ya está otorgado
+                        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                                != PackageManager.PERMISSION_GRANTED) {
+
+                            // Permiso NO estaba otorgado, se solicita
+                            dialogInterface.dismiss();
+                            requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
+                        } else {
+                            // Permiso ya estaba otorgado, acceder a las apps
+                            dialogInterface.dismiss();
+                            presenter.cargarAppsAutomatico();
+                            refreshData();
+                            // Aqui mostrar mensaje informativo con las aplicaciones que se han sincronizado
+                        }
+                    }
+                });
+                builder.setNegativeButton("Añadir aplicaciones manualmente", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
 
         return layout;
     }
@@ -142,6 +210,11 @@ public class CatalogoView extends Fragment implements ICatalogoContract.View, Ma
     public void showLoadCorrect(int appsCount) {
         String text = getResources().getString(R.string.loadCorrect);
         Toast.makeText(this.getContext(), String.format(text, appsCount), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public PackageManager getPackageManager() {
+        return requireContext().getPackageManager();
     }
 
     @Override

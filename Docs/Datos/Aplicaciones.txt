@@ -1,65 +1,64 @@
 #Utilidades
-Screen Lock
-Link to Windows
+Link to Windows, https://i.imgur.com/NttMMhZ.png
 
 #Compras
-Aliexpress
-Shein
-Paypal
+Aliexpress, https://i.imgur.com/ITx2iKg.png
+Shein, https://i.imgur.com/q5tA69t.png
+Paypal, https://i.imgur.com/2XiG9e9.png
 
 #Comunicación
-Telegram
-Viber
-Discord
-Messenger
-WhatsApp
+Telegram, https://i.imgur.com/LcTY7gr.jpg
+Viber, https://i.imgur.com/5Z8uDNj.jpg
+Discord, https://i.imgur.com/4YRrKru.jpg
+Messenger, https://i.imgur.com/CWTCFQS.png
+WhatsApp, https://i.imgur.com/zsn1F6B.jpg
 
 #Fotografía
-Picsart
-Moments
-Preview
-Photos
+Picsart, https://i.imgur.com/waEUE3J.png
+Moments, https://i.imgur.com/PyDbRXJ.png
+Preview, https://i.imgur.com/zY35hGS.png
+Photos, https://i.imgur.com/Pq45xpO.png
 
 #Productividad
-Microsoft Excel
-LastPass
-OneNote
-Microsoft 365
+Microsoft Excel, https://i.imgur.com/7jUPGrR.png
+LastPass, https://i.imgur.com/Cz6kjMf.png
+OneNote, https://i.imgur.com/pUmmdm0.png
+Microsoft 365, https://i.imgur.com/EQx6hQf.png
 
 #Reuniones y Conferencias
-Zoom
-Meet
-Microsoft Teams
+Zoom, https://i.imgur.com/af90BuH.jpg
+Meet, https://i.imgur.com/tLgko7v.jpg
+Microsoft Teams, https://i.imgur.com/vh8uQop.png
 
 #Educación
-Moodle
+Moodle, https://i.imgur.com/EDR5YuN.png
 
 #Almacenamiento en la Nube
-Dropbox
-Google Drive
-OneDrive
+Dropbox, https://i.imgur.com/DN2CmC2.png
+Google Drive, https://i.imgur.com/GMUpQTQ.png
+OneDrive, https://i.imgur.com/Armq8qw.png
 
 #Comida
-Uber Eats
+Uber Eats, https://i.imgur.com/JEWlqyV.png
 
 #Entretenimiento
-Twitch
-Netflix
-TikTok
-Shazam
+Twitch, https://i.imgur.com/ad7rJ7z.jpg
+Netflix, https://i.imgur.com/OfqcmZ8.jpg
+TikTok, https://i.imgur.com/ILHC6Pp.jpg
+Shazam, https://i.imgur.com/KT4MGRk.png
 
 #Viajes
-Uber
+Uber, https://i.imgur.com/MUlPBjq.png
 
 #Navegadores Web
-Opera Touch
-Firefox
-Chrome
+Opera Touch, https://i.imgur.com/W4Oi62d.png
+Firefox, https://i.imgur.com/hF0g1uU.png
+Chrome, https://i.imgur.com/OYkQys3.png
 
 #Redes Sociales
-Facebook
-LinkedIn
-Instagram
+Facebook, https://i.imgur.com/2jJE0Km.jpg
+LinkedIn, https://i.imgur.com/nVaiL7E.jpg
+Instagram, https://i.imgur.com/MNaIwAy.jpg
 
 #Seguridad
-Authenticator
+Authenticator, https://i.imgur.com/4LFvxoy.png

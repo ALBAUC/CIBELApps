@@ -43,8 +43,10 @@ public class LoadDatabase {
 	                    tipoRepo.save(tipoActual);
 	                } else if (!line.isEmpty() && tipoActual != null) {
 	                    // Nueva aplicacion
-	                    String nombreDispositivo = line;
-	                    Activo activo = new Activo(nombreDispositivo, tipoActual);
+	                    String[] aplicacionInfo = line.split(", ");
+	                    String nombreApp = aplicacionInfo[0];
+	                    String icono = aplicacionInfo[1];
+	                    Activo activo = new Activo(nombreApp, icono, tipoActual);
 	                    activoRepo.save(activo);
 	                }
 	            }

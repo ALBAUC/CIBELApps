@@ -1,4 +1,4 @@
-package es.unican.appriesgospersonales.activities.apps;
+package es.unican.cibelapps.activities.activos;
 
 import static org.mockito.Mockito.verify;
 
@@ -11,8 +11,6 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import es.unican.cibelapps.activities.activos.CatalogoPresenter;
-import es.unican.cibelapps.activities.activos.ICatalogoContract;
 import es.unican.cibelapps.common.MyApplication;
 
 @RunWith(RobolectricTestRunner.class)

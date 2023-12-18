@@ -1,5 +1,7 @@
 package es.unican.cibelapps.activities.activos;
 
+import android.content.pm.PackageManager;
+
 import java.util.List;
 
 import es.unican.cibelapps.common.MyApplication;
@@ -30,6 +32,8 @@ public interface ICatalogoContract {
          * @param appsCount el numero de aplicaciones que fueron cargadas
          */
         void showLoadCorrect(int appsCount);
+
+        PackageManager getPackageManager();
     }
 
     interface Presenter {
@@ -45,5 +49,7 @@ public interface ICatalogoContract {
         List<Tipo> getTipos();
 
         List<Activo> getAllActivos();
+
+        List<Activo> cargarAppsAutomatico();
     }
 }
