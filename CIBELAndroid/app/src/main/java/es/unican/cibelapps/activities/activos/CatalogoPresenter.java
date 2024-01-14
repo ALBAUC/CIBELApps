@@ -29,9 +29,11 @@ public class CatalogoPresenter implements ICatalogoContract.Presenter {
     private PerfilDao perfilDao;
     private ICibelRepository cibelRepository;
     private Perfil perfil;
+    private List<String> appsNoDatos;
 
     public CatalogoPresenter(ICatalogoContract.View view) {
         this.view = view;
+        appsNoDatos = new ArrayList<>();
     }
 
     // Para tests
@@ -109,10 +111,13 @@ public class CatalogoPresenter implements ICatalogoContract.Presenter {
     public List<Activo> cargarAppsAutomatico() {
         List<Activo> appsCargadas = new ArrayList<>();
         PackageManager pm = view.getPackageManager();
-        List<PackageInfo> apps = pm.getInstalledPackages(PackageManager.GET_PERMISSIONS);
-        for (PackageInfo packageInfo : apps) {
+        List<PackageInfo> appsInstaladas = pm.getInstalledPackages(PackageManager.GET_PERMISSIONS);
+
+        for (PackageInfo packageInfo : appsInstaladas) {
             if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
                 String nombreAppEnDispositivo = packageInfo.applicationInfo.loadLabel(pm).toString();
+                Log.d("CatalogoPresenter", nombreAppEnDispositivo + " " + packageInfo.versionName);
+
                 Activo mejorCoincidencia = encontrarCoincidenciaPorNombre(nombreAppEnDispositivo);
                 if (mejorCoincidencia != null) {
                     mejorCoincidencia.setFk_perfil(perfil.getId());
@@ -120,6 +125,8 @@ public class CatalogoPresenter implements ICatalogoContract.Presenter {
                     activoDao.update(mejorCoincidencia);
                     perfilDao.update(perfil);
                     appsCargadas.add(mejorCoincidencia);
+                } else {
+                    appsNoDatos.add(nombreAppEnDispositivo);
                 }
             }
         }
@@ -152,31 +159,8 @@ public class CatalogoPresenter implements ICatalogoContract.Presenter {
         return null;
     }
 
-
-    public static double calcularSimilitudLevenshtein(String str1, String str2) {
-        int len1 = str1.length() + 1;
-        int len2 = str2.length() + 1;
-
-        int[][] distancia = new int[len1][len2];
-
-        for (int i = 0; i < len1; i++) {
-            distancia[i][0] = i;
-        }
-
-        for (int j = 0; j < len2; j++) {
-            distancia[0][j] = j;
-        }
-
-        for (int i = 1; i < len1; i++) {
-            for (int j = 1; j < len2; j++) {
-                int costo = (str1.charAt(i - 1) == str2.charAt(j - 1)) ? 0 : 1;
-                distancia[i][j] = Math.min(Math.min(distancia[i - 1][j] + 1, distancia[i][j - 1] + 1), distancia[i - 1][j - 1] + costo);
-            }
-        }
-
-        int maxLen = Math.max(len1, len2);
-        double similitud = 1.0 - (double) distancia[len1 - 1][len2 - 1] / maxLen;
-        return similitud;
+    public List<String> getNoDatosApps() {
+        return appsNoDatos;
     }
 
     @Override

@@ -63,12 +63,12 @@ public class CatalogoView extends Fragment implements ICatalogoContract.View, Ma
         requestPermissionLauncher = registerForActivityResult(new RequestPermission(), isGranted -> {
             if (isGranted) {
                 // Permiso otorgado, acceder a las apps
-                presenter.cargarAppsAutomatico();
+                List<Activo> activosSincronizados = presenter.cargarAppsAutomatico();
                 refreshData();
-                // Aqui mostrar mensaje informativo con las aplicaciones que se han sincronizado
+                showSyncedAppsMessage(activosSincronizados.size(), presenter.getNoDatosApps());
             } else {
                 // Permiso denegado
-                // Explica al usuario que la función no está disponible porque
+                // Explicar al usuario que la función no está disponible porque
                 // requiere un permiso que el usuario ha denegado.
             }
         });
@@ -109,9 +109,9 @@ public class CatalogoView extends Fragment implements ICatalogoContract.View, Ma
                         } else {
                             // Permiso ya estaba otorgado, acceder a las apps
                             dialogInterface.dismiss();
-                            presenter.cargarAppsAutomatico();
+                            List<Activo> activosSincronizados = presenter.cargarAppsAutomatico();
                             refreshData();
-                            // Aqui mostrar mensaje informativo con las aplicaciones que se han sincronizado
+                            showSyncedAppsMessage(activosSincronizados.size(), presenter.getNoDatosApps());
                         }
                     }
                 });
@@ -127,6 +127,32 @@ public class CatalogoView extends Fragment implements ICatalogoContract.View, Ma
         });
 
         return layout;
+    }
+
+    // Método para mostrar el mensaje informativo con el número de aplicaciones sincronizadas y las no disponibles
+    private void showSyncedAppsMessage(int numAppsSincronizadas, List<String> unavailableApps) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("¡Listo!");
+        builder.setMessage("Se han añadido a tu perfil " + numAppsSincronizadas + " aplicaciones.\n\n"
+                + "Lamentamos comunicarle que no disponemos de datos sobre las siguientes aplicaciones:\n"
+                + formatUnavailableAppsList(unavailableApps));
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    // Método para formatear la lista de aplicaciones no disponibles
+    private String formatUnavailableAppsList(List<String> unavailableApps) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String app : unavailableApps) {
+            stringBuilder.append("- ").append(app).append("\n");
+        }
+        return stringBuilder.toString();
     }
 
     @Override

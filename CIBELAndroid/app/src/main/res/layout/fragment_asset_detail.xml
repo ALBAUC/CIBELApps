@@ -101,10 +101,11 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="12dp"
             android:background="@drawable/button"
-            android:text="@string/dElement_detail_add"
+            android:text="@string/asset_detail_add"
             android:textAllCaps="false" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cvesChart_cv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="17dp"
@@ -166,6 +167,37 @@
                 android:textSize="12sp"
                 tools:text="Mayor a menor seguridad"/>
         </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/no_fallos_cv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="17dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_margin="12dp">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginRight="7dp"
+                    android:src="@drawable/awesome" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="@string/no_cves"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/assetDetail_cves_rv"

@@ -258,10 +258,9 @@ public class Activo implements Parcelable {
     }
 
     public int calcularPuntuacionSeguridad() {
-        // Los mayores valores de totalGravedad rondan entre 350-400
-        // Por lo que consideramos 400 como límite de mayor gravedad
-        // Por eso divido entre 4
-        int puntuacionSeguridad = (int) Math.round(100 - (calcularTotalGravedad() / 4));
+        // Consideramos 10000 como límite de mayor gravedad
+        // Por eso divido entre 10
+        int puntuacionSeguridad = (int) Math.round(100 - (calcularTotalGravedad() / 10));
         return Math.max(0, Math.min(100, puntuacionSeguridad));
     }
 

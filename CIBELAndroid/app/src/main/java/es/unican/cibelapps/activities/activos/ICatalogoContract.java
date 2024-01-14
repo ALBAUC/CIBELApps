@@ -51,5 +51,6 @@ public interface ICatalogoContract {
         List<Activo> getAllActivos();
 
         List<Activo> cargarAppsAutomatico();
+        List<String> getNoDatosApps();
     }
 }

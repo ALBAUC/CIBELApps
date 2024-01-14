@@ -284,6 +284,13 @@ public class CatalogoTipoView extends Fragment implements ICatalogoTipoContract.
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        requireActivity().setTitle(R.string.bottom_nav_home);
+    }
+
+
+    @Override
     public MyApplication getMyApplication() {
         return (MyApplication) requireActivity().getApplication();
     }

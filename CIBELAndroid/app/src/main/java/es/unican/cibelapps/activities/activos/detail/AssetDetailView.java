@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -90,6 +91,9 @@ public class AssetDetailView extends Fragment implements IAssetDetailContract.Vi
             ImageView securityIconIV = layout.findViewById(R.id.securityIcon_iv);
             TextView securityTagTV = layout.findViewById(R.id.securityTag_tv);
 
+            CardView noFallosCV = layout.findViewById(R.id.no_fallos_cv);
+            CardView cvesChartCV = layout.findViewById(R.id.cvesChart_cv);
+
             assetCvesRV = layout.findViewById(R.id.assetDetail_cves_rv);
             cvePC = layout.findViewById(R.id.cve_pc);
             LinearLayout sortLL = layout.findViewById(R.id.sort_ll);
@@ -115,6 +119,14 @@ public class AssetDetailView extends Fragment implements IAssetDetailContract.Vi
                     updateAssetAddButton(presenter.isAssetAdded());
                 }
             });
+
+            if (presenter.getAssetCves().size() != 0) {
+                noFallosCV.setVisibility(View.GONE);
+                cvesChartCV.setVisibility(View.VISIBLE);
+            } else {
+                noFallosCV.setVisibility(View.VISIBLE);
+                cvesChartCV.setVisibility(View.GONE);
+            }
 
             // Configurar lista de cves
             assetCvesRV.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -151,7 +163,7 @@ public class AssetDetailView extends Fragment implements IAssetDetailContract.Vi
             }
 
             appAdd_bt.setTextColor(ContextCompat.getColor(getContext(), R.color.primary));
-            appAdd_bt.setText(R.string.dElement_detail_remove);
+            appAdd_bt.setText(R.string.asset_detail_remove);
         } else {
             if (isDarkModeEnabled()) {
                 appAdd_bt.setTextColor(ContextCompat.getColor(getContext(), R.color.black));
@@ -159,7 +171,7 @@ public class AssetDetailView extends Fragment implements IAssetDetailContract.Vi
                 appAdd_bt.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
             }
             appAdd_bt.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.primary)));
-            appAdd_bt.setText(R.string.dElement_detail_add);
+            appAdd_bt.setText(R.string.asset_detail_add);
         }
     }
 

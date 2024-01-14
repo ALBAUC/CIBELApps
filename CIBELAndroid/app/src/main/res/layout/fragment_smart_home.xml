@@ -111,7 +111,7 @@
                 android:layout_weight="1"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:text="@string/tus_dispositivos" />
+                android:text="@string/your_assets" />
 
             <ImageView
                 android:id="@+id/sort_iv"
