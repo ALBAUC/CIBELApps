@@ -67,7 +67,7 @@
     <string name="ordenarGravedad_Desc">Mayor a menor gravedad</string>
 
     <string name="vacio"></string>
-    <string name="info_sync_apps">Para simplificar la gestión de tu perfil, necesitamos acceder a la lista de aplicaciones instaladas en tu dispositivo. Pulsa el botón de sincronización y concede los persimos cuando se te solicite.</string>
+    <string name="info_sync_apps">Si deseas que las aplicaciones instaladas en tu teléfono se agreguen automáticamente a tu perfil pulsa el botón de sincronización y concede los permisos necesarios. \nEste proceso también nos permite realizar un análisis más preciso de la seguridad de tus aplicaciones, ya que nos proporciona información sobre las versiones instaladas.</string>
     <string name="no_cves">Esta aplicación no tiene fallos de seguridad</string>
 
 

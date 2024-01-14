@@ -25,6 +25,10 @@ public class Vulnerabilidad {
     
     private String baseSeverity;
     
+    private String versionEndExcluding;
+    
+	private String versionEndIncluding;
+    
     public Vulnerabilidad() {}
 
 	public Vulnerabilidad(String idCVE, String descripcion, String confidentialityImpact, String integrityImpact,
@@ -92,6 +96,22 @@ public class Vulnerabilidad {
 
 	public void setBaseSeverity(String baseSeverity) {
 		this.baseSeverity = baseSeverity;
+	}
+	
+	public String getVersionEndExcluding() {
+		return versionEndExcluding;
+	}
+
+	public void setVersionEndExcluding(String versionEndExcluding) {
+		this.versionEndExcluding = versionEndExcluding;
+	}
+
+	public String getVersionEndIncluding() {
+		return versionEndIncluding;
+	}
+
+	public void setVersionEndIncluding(String versionEndIncluding) {
+		this.versionEndIncluding = versionEndIncluding;
 	}
 
 	@Override

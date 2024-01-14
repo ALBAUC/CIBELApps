@@ -269,7 +269,9 @@ public class Activo implements Parcelable {
         int totalGravedad = 0;
 
         for (Vulnerabilidad v : vulnerabilidades) {
-            totalGravedad += v.getBaseScore() * 10; // baseScore de 0 a 100
+            if (v.getAfectaApp()) {
+                totalGravedad += v.getBaseScore() * 10; // baseScore de 0 a 100
+            }
         }
 
         return totalGravedad;

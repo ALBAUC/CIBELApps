@@ -64,11 +64,14 @@ public class Vulnerabilidad implements Parcelable {
     private String availabilityImpact;
     private double baseScore;
     private String baseSeverity;
+    private String versionEndExcluding;
+    private String versionEndIncluding;
+    private boolean afectaApp = true;
 
-    @Generated(hash = 325331057)
-    public Vulnerabilidad(String idCVE, String descripcion,
-            String confidentialityImpact, String integrityImpact,
-            String availabilityImpact, double baseScore, String baseSeverity) {
+    @Generated(hash = 1367230261)
+    public Vulnerabilidad(String idCVE, String descripcion, String confidentialityImpact, String integrityImpact,
+            String availabilityImpact, double baseScore, String baseSeverity, String versionEndExcluding,
+            String versionEndIncluding, boolean afectaApp) {
         this.idCVE = idCVE;
         this.descripcion = descripcion;
         this.confidentialityImpact = confidentialityImpact;
@@ -76,6 +79,9 @@ public class Vulnerabilidad implements Parcelable {
         this.availabilityImpact = availabilityImpact;
         this.baseScore = baseScore;
         this.baseSeverity = baseSeverity;
+        this.versionEndExcluding = versionEndExcluding;
+        this.versionEndIncluding = versionEndIncluding;
+        this.afectaApp = afectaApp;
     }
     @Generated(hash = 1462448819)
     public Vulnerabilidad() {
@@ -140,13 +146,15 @@ public class Vulnerabilidad implements Parcelable {
     @Override
     public String toString() {
         return "Vulnerabilidad{" +
-                ", idCVE='" + idCVE + '\'' +
+                "idCVE='" + idCVE + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", confidentialityImpact='" + confidentialityImpact + '\'' +
                 ", integrityImpact='" + integrityImpact + '\'' +
                 ", availabilityImpact='" + availabilityImpact + '\'' +
                 ", baseScore=" + baseScore +
                 ", baseSeverity='" + baseSeverity + '\'' +
+                ", versionEndExcluding='" + versionEndExcluding + '\'' +
+                ", versionEndIncluding='" + versionEndIncluding + '\'' +
                 '}';
     }
 
@@ -237,5 +245,23 @@ public class Vulnerabilidad implements Parcelable {
                 break;
         }
         return result;
+    }
+    public String getVersionEndExcluding() {
+        return this.versionEndExcluding;
+    }
+    public void setVersionEndExcluding(String versionEndExcluding) {
+        this.versionEndExcluding = versionEndExcluding;
+    }
+    public String getVersionEndIncluding() {
+        return this.versionEndIncluding;
+    }
+    public void setVersionEndIncluding(String versionEndIncluding) {
+        this.versionEndIncluding = versionEndIncluding;
+    }
+    public boolean getAfectaApp() {
+        return this.afectaApp;
+    }
+    public void setAfectaApp(boolean afectaApp) {
+        this.afectaApp = afectaApp;
     }
 }

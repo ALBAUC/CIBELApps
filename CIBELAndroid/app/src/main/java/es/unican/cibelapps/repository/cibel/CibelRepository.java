@@ -65,6 +65,7 @@ public class CibelRepository implements ICibelRepository {
         if (activos != null) {
             ActivoDao activoDao = daoSession.getActivoDao();
             TipoDao tipoDao = daoSession.getTipoDao();
+            VulnerabilidadDao vulnerabilidadDao = daoSession.getVulnerabilidadDao();
             JoinActivosWithVulnerabilidadesDao avDao = daoSession.getJoinActivosWithVulnerabilidadesDao();
             for (Activo a : activos) {
                 Activo aBD = activoDao.load(a.getIdActivo());
@@ -84,6 +85,15 @@ public class CibelRepository implements ICibelRepository {
                     aBD.setNombre(a.getNombre());
                     aBD.setIcono(a.getIcono());
                     aBD.setFk_tipo(a.getTipoTrampa().getIdTipo());
+                    for (Vulnerabilidad v : a.getVulnerabilidades()) {
+                        if (vulnerabilidadDao.load(v.getIdCVE()) == null) {
+                            // Nueva vulnerabilidad
+                            JoinActivosWithVulnerabilidades av = new JoinActivosWithVulnerabilidades();
+                            av.setActivoId(aBD.getIdActivo());
+                            av.setVulnerabilidadId(v.getIdCVE());
+                            avDao.insert(av);
+                        }
+                    }
                     activoDao.update(aBD);
                 }
             }
@@ -153,6 +163,7 @@ public class CibelRepository implements ICibelRepository {
             VulnerabilidadDao vulnerabilidadDao = daoSession.getVulnerabilidadDao();
             for (Vulnerabilidad v : vulnerabilidades) {
                 if (vulnerabilidadDao.load(v.getIdCVE()) == null) {
+                    //v.setAfectaApp(true);
                     vulnerabilidadDao.insert(v);
                 }
             }

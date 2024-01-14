@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.util.Log;
 
 import es.unican.cibelapps.common.Callback;
@@ -20,6 +23,7 @@ import es.unican.cibelapps.repository.db.ActivoDao;
 import es.unican.cibelapps.repository.db.DaoSession;
 import es.unican.cibelapps.repository.db.PerfilDao;
 import es.unican.cibelapps.repository.db.TipoDao;
+import es.unican.cibelapps.repository.db.VulnerabilidadDao;
 
 public class CatalogoPresenter implements ICatalogoContract.Presenter {
 
@@ -27,6 +31,7 @@ public class CatalogoPresenter implements ICatalogoContract.Presenter {
     private ActivoDao activoDao;
     private TipoDao tipoDao;
     private PerfilDao perfilDao;
+    private VulnerabilidadDao vulnerabilidadDao;
     private ICibelRepository cibelRepository;
     private Perfil perfil;
     private List<String> appsNoDatos;
@@ -49,6 +54,7 @@ public class CatalogoPresenter implements ICatalogoContract.Presenter {
         tipoDao = daoSession.getTipoDao();
         perfilDao = daoSession.getPerfilDao();
         perfil = Perfil.getInstance(perfilDao);
+        vulnerabilidadDao = daoSession.getVulnerabilidadDao();
 
         cibelRepository = new CibelRepository(view.getMyApplication());
         if (cibelRepository.lastDownloadOlderThan(30, CibelRepository.KEY_LAST_SAVED_A)) {
@@ -116,14 +122,30 @@ public class CatalogoPresenter implements ICatalogoContract.Presenter {
         for (PackageInfo packageInfo : appsInstaladas) {
             if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
                 String nombreAppEnDispositivo = packageInfo.applicationInfo.loadLabel(pm).toString();
-                Log.d("CatalogoPresenter", nombreAppEnDispositivo + " " + packageInfo.versionName);
+                String versionAppEnDispositivo = packageInfo.versionName;
+                Log.d("CatalogoPresenter", nombreAppEnDispositivo);
 
                 Activo mejorCoincidencia = encontrarCoincidenciaPorNombre(nombreAppEnDispositivo);
                 if (mejorCoincidencia != null) {
+                    // Filtrar vulnerabilidades por version
+                    for (Vulnerabilidad v : mejorCoincidencia.getVulnerabilidades()) {
+                        String versionEndExcluding = v.getVersionEndExcluding();
+                        String versionEndIncluding = v.getVersionEndIncluding();
+                        if (!((versionEndExcluding == null || compareVersions(versionAppEnDispositivo, versionEndExcluding) < 0)
+                                && (versionEndIncluding == null || compareVersions(versionAppEnDispositivo, versionEndIncluding) <= 0))) {
+                            // La aplicación no está afectada por la vulnerabilidad
+                            v.setAfectaApp(false);
+                        } else {
+                            v.setAfectaApp(true);
+                        }
+                        vulnerabilidadDao.update(v);
+                    }
+                    // Añadir activo al perfil
                     mejorCoincidencia.setFk_perfil(perfil.getId());
                     perfil.getActivosAnhadidos().add(mejorCoincidencia);
                     activoDao.update(mejorCoincidencia);
                     perfilDao.update(perfil);
+
                     appsCargadas.add(mejorCoincidencia);
                 } else {
                     appsNoDatos.add(nombreAppEnDispositivo);
@@ -131,6 +153,48 @@ public class CatalogoPresenter implements ICatalogoContract.Presenter {
             }
         }
         return appsCargadas;
+    }
+
+    // Función para comparar versiones numéricamente
+    private static int compareVersions(String version1, String version2) {
+        String numericPart1 = extractNumericPart(version1);
+        String numericPart2 = extractNumericPart(version2);
+
+        Log.d("CatalogoPresenter", "Version dispositivo: " + numericPart1 + " - Version cve: " + numericPart2);
+
+        if (numericPart1 != null && numericPart2 != null) {
+            String[] parts1 = numericPart1.split("\\.");
+            String[] parts2 = numericPart2.split("\\.");
+
+            for (int i = 0; i < Math.min(parts1.length, parts2.length); i++) {
+                int part1 = Integer.parseInt(parts1[i]);
+                int part2 = Integer.parseInt(parts2[i]);
+
+                if (part1 < part2) {
+                    return -1;
+                } else if (part1 > part2) {
+                    return 1;
+                }
+            }
+
+            return Integer.compare(parts1.length, parts2.length);
+        }
+
+        // Manejar el caso en que no se pudo extraer la parte numérica de alguna de las versiones
+        return -1;
+    }
+
+    private static String extractNumericPart(String version) {
+        // Patrón para buscar una cadena que comience con dígitos y un punto (versiones entre 2 y 4 partes)
+        Pattern pattern = Pattern.compile("(\\d+\\.\\d+(\\.\\d+){0,2})");
+        Matcher matcher = pattern.matcher(version);
+
+        // Buscar la coincidencia en la cadena
+        if (matcher.find()) {
+            return matcher.group(1);  // Devolver el grupo coincidente
+        } else {
+            return null;  // No se encontró un formato de versión válido
+        }
     }
 
     private Activo encontrarCoincidenciaPorNombre(String nombreDispositivo) {

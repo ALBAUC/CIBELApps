@@ -82,7 +82,13 @@ public class AssetDetailPresenter implements IAssetDetailContract.Presenter {
     @Override
     public List<Vulnerabilidad> getAssetCves() {
         List<Vulnerabilidad> assetCves = vulnerabilidadDao._queryActivo_Vulnerabilidades(activo.getIdActivo());
-        return assetCves;
+        List<Vulnerabilidad> assetCvesAfectan = new ArrayList<>();
+        for (Vulnerabilidad v : assetCves) {
+            if (v.getAfectaApp()) {
+                assetCvesAfectan.add(v);
+            }
+        }
+        return assetCvesAfectan;
     }
 
     @Override
