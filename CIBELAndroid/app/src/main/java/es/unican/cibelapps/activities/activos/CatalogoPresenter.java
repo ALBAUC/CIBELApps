@@ -123,7 +123,6 @@ public class CatalogoPresenter implements ICatalogoContract.Presenter {
             if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
                 String nombreAppEnDispositivo = packageInfo.applicationInfo.loadLabel(pm).toString();
                 String versionAppEnDispositivo = packageInfo.versionName;
-                Log.d("CatalogoPresenter", nombreAppEnDispositivo);
 
                 Activo mejorCoincidencia = encontrarCoincidenciaPorNombre(nombreAppEnDispositivo);
                 if (mejorCoincidencia != null) {
@@ -159,8 +158,6 @@ public class CatalogoPresenter implements ICatalogoContract.Presenter {
     private static int compareVersions(String version1, String version2) {
         String numericPart1 = extractNumericPart(version1);
         String numericPart2 = extractNumericPart(version2);
-
-        Log.d("CatalogoPresenter", "Version dispositivo: " + numericPart1 + " - Version cve: " + numericPart2);
 
         if (numericPart1 != null && numericPart2 != null) {
             String[] parts1 = numericPart1.split("\\.");
