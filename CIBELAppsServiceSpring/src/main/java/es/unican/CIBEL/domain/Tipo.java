@@ -15,6 +15,7 @@ public class Tipo {
 	private Long id;
 	
 	private String nombre;
+	private String nombre_en;
 	
 	public Tipo() {}
 
@@ -36,6 +37,14 @@ public class Tipo {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public String getNombre_en() {
+		return nombre_en;
+	}
+
+	public void setNombre_en(String nombre_en) {
+		this.nombre_en = nombre_en;
 	}
 
 	@Override

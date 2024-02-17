@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
+import es.unican.cibelapps.R;
 import es.unican.cibelapps.model.Activo;
 import es.unican.cibelapps.model.Perfil;
 import es.unican.cibelapps.model.Vulnerabilidad;
@@ -50,7 +52,15 @@ public class AssetDetailPresenter implements IAssetDetailContract.Presenter {
 
     @Override
     public String getAssetType() {
-        return activo.getTipo().getNombre();
+        String result = "";
+        Locale locale = view.getMyApplication().getResources().getConfiguration().getLocales().get(0);
+        String language = locale.getLanguage();
+        if (language.equals("es")) {
+            result = activo.getTipo().getNombre();
+        } else if (language.equals("en")) {
+            result = activo.getTipo().getNombre_en();
+        }
+        return result;
     }
 
     @Override
@@ -118,10 +128,11 @@ public class AssetDetailPresenter implements IAssetDetailContract.Presenter {
             }
         }
         ArrayList pieEntries = new ArrayList();
-        pieEntries.add(new PieEntry(numCritical, Vulnerabilidad.ES_SEVERITY_C));
-        pieEntries.add(new PieEntry(numHigh, Vulnerabilidad.ES_SEVERITY_H));
-        pieEntries.add(new PieEntry(numMedium, Vulnerabilidad.ES_SEVERITY_M));
-        pieEntries.add(new PieEntry(numLow, Vulnerabilidad.ES_SEVERITY_L));
+        pieEntries.add(new PieEntry(numCritical, view.getMyApplication().getString(R.string.severity_critical)));
+        pieEntries.add(new PieEntry(numHigh, view.getMyApplication().getString(R.string.severity_high)));
+        pieEntries.add(new PieEntry(numMedium, view.getMyApplication().getString(R.string.severity_medium)));
+        pieEntries.add(new PieEntry(numLow, view.getMyApplication().getString(R.string.severity_low)));
+
         return pieEntries;
     }
 

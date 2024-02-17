@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">CIBELApps</string>
+
+    <string name="bottom_nav_home">HOME</string>
+    <string name="bottom_nav_perfil">PROFILE</string>
+
+    <string name="search_hint">Search applications</string>
+
+    <string name="loadCorrect">%d applications have been loaded</string>
+    <string name="loadError">An error occurred while updating the data</string>
+
+    <string name="asset_detail_add">Add</string>
+    <string name="asset_detail_remove">Remove</string>
+
+    <string name="perfil_severity">Severity of security flaws</string>
+
+    <string name="severity_low">LOW</string>
+    <string name="severity_medium">MEDIUM</string>
+    <string name="severity_high">HIGH</string>
+    <string name="severity_critical">CRITICAL</string>
+
+    <string name="cve_baseScore_title">Severity</string>
+    <string name="cve_confidencialidad_title">Confidentiality</string>
+    <string name="cve_integridad_title">Integrity</string>
+    <string name="cve_disponibilidad_title">Availability</string>
+    <string name="cve_impacto_title">Impact</string>
+
+    <string name="cve_impact_n">NONE</string>
+    <string name="cve_impact_l">LOW</string>
+    <string name="cve_impact_p">PARTIAL</string>
+    <string name="cve_impact_h">HIGH</string>
+    <string name="cve_impact_c">COMPLETE</string>
+
+    <string name="cve_info_impacto">
+<![CDATA[
+    <b>1. Confidentiality:</b><br>
+    What does it mean? Confidentiality refers to the ability to protect information and allow access only to authorized individuals or systems. <br><br>
+    Example in a mobile application: If you use a mobile banking application, confidentiality ensures that your financial data is protected and only accessible through secure authentication.<br><br>
+
+    <b>2. Integrity:</b><br>
+    What does it mean? Integrity refers to the accuracy and correctness of information.<br><br>
+    Example in a mobile application: If you use a messaging application, integrity ensures that the messages sent are not altered during transmission, maintaining their original content.<br><br>
+
+    <b>3. Availability:</b><br>
+    What does it mean? Availability refers to the ability to be operational and accessible when needed. In the mobile context, this ensures that users can use the application without interruptions or downtime.<br><br>
+    Example in a mobile application: For a taxi service application, availability means that users can request a ride and use the application at any time without issues.<br><br>
+
+    The labels you will see next to these features have the following meanings:<br><br>
+    1. <b>NONE:</b> This indicates no impact.<br>
+    2. <b>LOW:</b> The impact is minor and does not pose a serious threat.<br>
+    3. <b>PARTIAL:</b> This means there is a significant impact, but it is not complete.<br>
+    4. <b>HIGH:</b> This means the impact is severe and may have serious consequences.<br>
+    5. <b>COMPLETE:</b> This means the impact is total and may have catastrophic consequences.
+]]>
+    </string>
+    <string name="assetDetail_tabCves">Security</string>
+
+    <string name="security_title">Security Score</string>
+
+    <string name="seguridad_0">Very insecure</string>
+    <string name="seguridad_1">Insecure</string>
+    <string name="seguridad_2">Sufficiently secure</string>
+    <string name="seguridad_3">Quite secure</string>
+    <string name="ordenarSeguridad_Desc">Higher to lower security</string>
+    <string name="ordenarSeguridad_Asc">Lower to higher security</string>
+
+    <string name="ordenar_por">Sort by</string>
+    <string name="your_assets">Your applications</string>
+    <string name="fallos_de_seguridad">Security flaws</string>
+
+    <string name="ordenarFecha_Rec">Most recent</string>
+    <string name="ordenarFecha_Ant">Oldest</string>
+    <string name="ordenarGravedad_Asc">Lower to higher severity</string>
+    <string name="ordenarGravedad_Desc">Higher to lower severity</string>
+
+    <string name="vacio"></string>
+    <string name="info_sync_apps">If you want the applications installed on your phone to be automatically added to your profile, press the sync button and grant the necessary permissions. \nThis process also allows us to perform a more accurate analysis of the security of your applications, as it provides us with information about the installed versions.</string>
+    <string name="no_cves">This application has no security flaws</string>
+</resources>

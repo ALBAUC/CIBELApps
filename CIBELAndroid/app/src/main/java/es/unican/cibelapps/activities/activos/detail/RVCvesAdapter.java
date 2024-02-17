@@ -92,7 +92,7 @@ public class RVCvesAdapter extends RecyclerView.Adapter<RVCvesAdapter.CveViewHol
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
         xAxis.setDrawAxisLine(false);
-        String[] etiquetas = {"Disponibilidad", "Integridad", "Confidencialidad"};
+        String[] etiquetas = {context.getString(R.string.cve_disponibilidad_title), context.getString(R.string.cve_integridad_title), context.getString(R.string.cve_confidencialidad_title)};
         xAxis.setValueFormatter(new IndexAxisValueFormatter(etiquetas));
         xAxis.setLabelCount(3);
         xAxis.setTypeface(ResourcesCompat.getFont(context, R.font.roboto_light));

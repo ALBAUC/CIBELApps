@@ -15,10 +15,6 @@ public interface ISmartHomeContract {
 
         List<Activo> getActivosPerfilOrdenadosPorSeguridadAsc();
 
-        ArrayList getEntries();
-
-        List<Vulnerabilidad> getVulnerabilidadesPerfil();
-
         int getSecurityRatingHome();
 
         List<Activo> getActivosPerfilOrdenadosPorSeguridadDesc();

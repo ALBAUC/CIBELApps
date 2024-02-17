@@ -37,28 +37,11 @@ public class Vulnerabilidad implements Parcelable {
     public static final String IMPACT_H = "HIGH";
     @Transient
     public static final String IMPACT_C = "COMPLETE";
-    @Transient
-    public static final String ES_SEVERITY_L = "BAJO";
-    @Transient
-    public static final String ES_SEVERITY_M = "MEDIO";
-    @Transient
-    public static final String ES_SEVERITY_H = "ALTO";
-    @Transient
-    public static final String ES_SEVERITY_C = "CRÍTICO";
-    @Transient
-    public static final String ES_IMPACT_N = "NINGUNO";
-    @Transient
-    public static final String ES_IMPACT_L = "BAJO";
-    @Transient
-    public static final String ES_IMPACT_P = "PARCIAL";
-    @Transient
-    public static final String ES_IMPACT_H = "ALTO";
-    @Transient
-    public static final String ES_IMPACT_C = "COMPLETO";
 
     @Id
     private String idCVE;
     private String descripcion;
+    private String descripcion_en;
     private String confidentialityImpact;
     private String integrityImpact;
     private String availabilityImpact;
@@ -68,12 +51,13 @@ public class Vulnerabilidad implements Parcelable {
     private String versionEndIncluding;
     private boolean afectaApp = true;
 
-    @Generated(hash = 1367230261)
-    public Vulnerabilidad(String idCVE, String descripcion, String confidentialityImpact, String integrityImpact,
-            String availabilityImpact, double baseScore, String baseSeverity, String versionEndExcluding,
-            String versionEndIncluding, boolean afectaApp) {
+    @Generated(hash = 2101606825)
+    public Vulnerabilidad(String idCVE, String descripcion, String descripcion_en, String confidentialityImpact,
+            String integrityImpact, String availabilityImpact, double baseScore, String baseSeverity,
+            String versionEndExcluding, String versionEndIncluding, boolean afectaApp) {
         this.idCVE = idCVE;
         this.descripcion = descripcion;
+        this.descripcion_en = descripcion_en;
         this.confidentialityImpact = confidentialityImpact;
         this.integrityImpact = integrityImpact;
         this.availabilityImpact = availabilityImpact;
@@ -263,5 +247,11 @@ public class Vulnerabilidad implements Parcelable {
     }
     public void setAfectaApp(boolean afectaApp) {
         this.afectaApp = afectaApp;
+    }
+    public String getDescripcion_en() {
+        return this.descripcion_en;
+    }
+    public void setDescripcion_en(String descripcion_en) {
+        this.descripcion_en = descripcion_en;
     }
 }

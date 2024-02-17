@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Locale;
 
 import es.unican.cibelapps.R;
 import es.unican.cibelapps.activities.activos.tipo.CatalogoTipoView;
@@ -63,7 +64,15 @@ public class RVTiposAdapter extends RecyclerView.Adapter<RVTiposAdapter.TipoView
         holder.activosRV.setAdapter(new RVAssetsAdapter(context, activos, perfilActivos, myApplication));
         holder.activosRV.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         holder.activosRV.setHasFixedSize(true);
-        holder.tipoNameTV.setText(tipos.get(position).getNombre());
+
+        Locale locale = context.getResources().getConfiguration().getLocales().get(0);
+        String language = locale.getLanguage();
+        if (language.equals("es")) {
+            holder.tipoNameTV.setText(tipos.get(position).getNombre());
+        } else if (language.equals("en")) {
+            holder.tipoNameTV.setText(tipos.get(position).getNombre_en());
+        }
+
     }
 
     public class TipoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

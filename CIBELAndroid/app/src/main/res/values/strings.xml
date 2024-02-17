@@ -24,6 +24,13 @@
     <string name="cve_integridad_title">Integridad</string>
     <string name="cve_disponibilidad_title">Disponibilidad</string>
     <string name="cve_impacto_title">Impacto</string>
+
+    <string name="cve_impact_n">NINGUNO</string>
+    <string name="cve_impact_l">BAJO</string>
+    <string name="cve_impact_p">PARCIAL</string>
+    <string name="cve_impact_h">ALTO</string>
+    <string name="cve_impact_c">COMPLETO</string>
+
     <string name="cve_info_impacto">
 <![CDATA[
     <b>1. Confidencialidad:</b><br>

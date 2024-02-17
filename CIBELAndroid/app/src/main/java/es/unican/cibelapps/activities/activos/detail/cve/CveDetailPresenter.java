@@ -1,5 +1,7 @@
 package es.unican.cibelapps.activities.activos.detail.cve;
 
+import java.util.Locale;
+
 import es.unican.cibelapps.model.Vulnerabilidad;
 
 public class CveDetailPresenter implements ICveDetailContract.Presenter {
@@ -29,7 +31,16 @@ public class CveDetailPresenter implements ICveDetailContract.Presenter {
 
     @Override
     public String getCveDescripcion() {
-        return vulnerabilidad.getDescripcion();
+        String result = "";
+        Locale locale = view.getMyApplication().getResources().getConfiguration().getLocales().get(0);
+        String language = locale.getLanguage();
+        if (language.equals("es")) {
+            result = vulnerabilidad.getDescripcion();
+        } else if (language.equals("en")) {
+            result = vulnerabilidad.getDescripcion_en();
+        }
+        return result;
+
     }
 
     @Override

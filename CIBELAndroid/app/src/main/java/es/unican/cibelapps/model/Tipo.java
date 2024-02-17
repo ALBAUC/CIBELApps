@@ -22,11 +22,13 @@ public class Tipo implements Parcelable {
     private Long idTipo;
 
     private String nombre;
+    private String nombre_en;
 
-    @Generated(hash = 1687190094)
-    public Tipo(@NonNull Long idTipo, String nombre) {
+    @Generated(hash = 475983693)
+    public Tipo(@NonNull Long idTipo, String nombre, String nombre_en) {
         this.idTipo = idTipo;
         this.nombre = nombre;
+        this.nombre_en = nombre_en;
     }
 
     @Generated(hash = 1352377350)
@@ -65,5 +67,13 @@ public class Tipo implements Parcelable {
     @Override
     public void writeToParcel(@NonNull Parcel parcel, int i) {
         parcel.writeString(nombre);
+    }
+
+    public String getNombre_en() {
+        return this.nombre_en;
+    }
+
+    public void setNombre_en(String nombre_en) {
+        this.nombre_en = nombre_en;
     }
 }

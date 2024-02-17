@@ -141,15 +141,15 @@ public class CveDetailView extends Fragment implements  ICveDetailContract.View,
     private String getTranslationForImpact(String impact) {
         switch (impact) {
             case Vulnerabilidad.IMPACT_N:
-                return Vulnerabilidad.ES_IMPACT_N;
+                return getString(R.string.cve_impact_n);
             case Vulnerabilidad.IMPACT_L:
-                return Vulnerabilidad.ES_IMPACT_L;
+                return getString(R.string.cve_impact_l);
             case Vulnerabilidad.IMPACT_P:
-                return Vulnerabilidad.ES_IMPACT_P;
+                return getString(R.string.cve_impact_p);
             case Vulnerabilidad.IMPACT_H:
-                return Vulnerabilidad.ES_IMPACT_H;
+                return getString(R.string.cve_impact_h);
             case Vulnerabilidad.IMPACT_C:
-                return Vulnerabilidad.ES_IMPACT_C;
+                return getString(R.string.cve_impact_c);
             default:
                 return impact;
         }

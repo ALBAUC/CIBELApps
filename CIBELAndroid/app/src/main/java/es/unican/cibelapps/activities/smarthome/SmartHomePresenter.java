@@ -41,48 +41,8 @@ public class SmartHomePresenter implements ISmartHomeContract.Presenter {
         return perfilAssets;
     }
 
-    @Override
-    public ArrayList getEntries() {
-        int numCritical = 0;
-        int numHigh = 0;
-        int numMedium = 0;
-        int numLow = 0;
-        for (Activo a : getActivosPerfil()) {
-            List<Vulnerabilidad> assetVulnerabilities = getVulnerabilidadesPorActivo(a);
-            for (Vulnerabilidad v : assetVulnerabilities) {
-                String baseSeverity = v.getBaseSeverity();
-                if (baseSeverity != null) {
-                    if (baseSeverity.equals(Vulnerabilidad.SEVERITY_C)) {
-                        numCritical++;
-                    } else if (baseSeverity.equals(Vulnerabilidad.SEVERITY_H)) {
-                        numHigh++;
-                    } else if (baseSeverity.equals(Vulnerabilidad.SEVERITY_M)) {
-                        numMedium++;
-                    } else if (baseSeverity.equals(Vulnerabilidad.SEVERITY_L)) {
-                        numLow++;
-                    }
-                }
-            }
-        }
-        ArrayList pieEntries = new ArrayList();
-        pieEntries.add(new PieEntry(numCritical, Vulnerabilidad.ES_SEVERITY_C));
-        pieEntries.add(new PieEntry(numHigh, Vulnerabilidad.ES_SEVERITY_H));
-        pieEntries.add(new PieEntry(numMedium, Vulnerabilidad.ES_SEVERITY_M));
-        pieEntries.add(new PieEntry(numLow, Vulnerabilidad.ES_SEVERITY_L));
-        return pieEntries;
-    }
-
     private List<Vulnerabilidad> getVulnerabilidadesPorActivo(Activo activo) {
         return vulnerabilidadDao._queryActivo_Vulnerabilidades(activo.getIdActivo());
-    }
-
-    @Override
-    public List<Vulnerabilidad> getVulnerabilidadesPerfil() {
-        List<Vulnerabilidad> vulnerabilidadesPerfil = new LinkedList<>();
-        for (Activo a : getActivosPerfil()) {
-            vulnerabilidadesPerfil.addAll(getVulnerabilidadesPorActivo(a));
-        }
-        return vulnerabilidadesPerfil;
     }
 
     @Override

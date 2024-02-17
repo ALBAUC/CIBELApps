@@ -15,6 +15,9 @@ public class Vulnerabilidad {
 	@Column(length = 5000)
 	private String descripcion;
 	
+	@Column(length = 5000)
+	private String descripcion_en;
+	
     private String confidentialityImpact;
     
     private String integrityImpact;
@@ -112,6 +115,14 @@ public class Vulnerabilidad {
 
 	public void setVersionEndIncluding(String versionEndIncluding) {
 		this.versionEndIncluding = versionEndIncluding;
+	}
+
+	public String getDescripcion_en() {
+		return descripcion_en;
+	}
+
+	public void setDescripcion_en(String descripcion_en) {
+		this.descripcion_en = descripcion_en;
 	}
 
 	@Override
