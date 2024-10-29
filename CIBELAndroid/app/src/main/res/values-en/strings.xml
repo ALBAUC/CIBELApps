@@ -75,5 +75,8 @@
 
     <string name="vacio"></string>
     <string name="info_sync_apps">If you want the applications installed on your phone to be automatically added to your profile, press the sync button and grant the necessary permissions. \nThis process also allows us to perform a more accurate analysis of the security of your applications, as it provides us with information about the installed versions.</string>
+    <string name="sync_apps_title">Sync apps</string>
+    <string name="sync_apps_bt_possitive">Sync</string>
+    <string name="sync_apps_bt_negative">Add apps manually</string>
     <string name="no_cves">This application has no security flaws</string>
 </resources>

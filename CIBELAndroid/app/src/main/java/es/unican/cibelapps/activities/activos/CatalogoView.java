@@ -94,9 +94,9 @@ public class CatalogoView extends Fragment implements ICatalogoContract.View, Ma
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle("Sincronizar aplicaciones");
+                builder.setTitle(R.string.sync_apps_title);
                 builder.setMessage(getResources().getString(R.string.info_sync_apps));
-                builder.setPositiveButton("Sincronizar", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(R.string.sync_apps_bt_possitive, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // Primero, verificar si el permiso ya está otorgado
@@ -115,7 +115,7 @@ public class CatalogoView extends Fragment implements ICatalogoContract.View, Ma
                         }
                     }
                 });
-                builder.setNegativeButton("Añadir aplicaciones manualmente", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(R.string.sync_apps_bt_negative, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();

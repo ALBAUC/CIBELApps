@@ -75,6 +75,9 @@
 
     <string name="vacio"></string>
     <string name="info_sync_apps">Si deseas que las aplicaciones instaladas en tu teléfono se agreguen automáticamente a tu perfil pulsa el botón de sincronización y concede los permisos necesarios. \nEste proceso también nos permite realizar un análisis más preciso de la seguridad de tus aplicaciones, ya que nos proporciona información sobre las versiones instaladas.</string>
+    <string name="sync_apps_title">Sincronizar aplicaciones</string>
+    <string name="sync_apps_bt_possitive">Sincronizar</string>
+    <string name="sync_apps_bt_negative">Añadir aplicaciones manualmente</string>
     <string name="no_cves">Esta aplicación no tiene fallos de seguridad</string>
 
 
